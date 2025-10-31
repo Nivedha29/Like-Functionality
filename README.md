@@ -1,16 +1,81 @@
-# React + Vite
+## RealWorld Blog App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured blog platform built with React, React Router v6, and React Hook Form, following the RealWorld API specification
+.
+This app supports authentication, article creation, profiles, and Markdown rendering — all connected to a live backend.
 
-Currently, two official plugins are available:
+## Live Deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Demo: 
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+⚛️ React (v18+)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🧭 React Router v6
+
+📝 React Hook Form for validation
+
+🔐 JWT-based authentication
+
+💾 Context API for global state management
+
+🧰 Axios for API communication
+
+🖋️ Markdown Rendering using react-markdown
+
+## Dependencies
+
+| Package              | Version | Description                                                |
+| -------------------- | ------- | ---------------------------------------------------------- |
+| **react**            | ^18.x   | Core React library                                         |
+| **react-dom**        | ^18.x   | React DOM renderer                                         |
+| **react-router-dom** | ^6.x    | Routing and navigation                                     |
+| **react-hook-form**  | ^7.x    | Form management and validation                             |
+| **axios**            | ^1.x    | HTTP client for API communication                          |
+| **react-markdown**   | ^9.x    | Render Markdown content as HTML                            |
+| **classnames**       | ^2.x    | Utility for conditionally joining class names              |
+| **jwt-decode**       | ^4.x    | Decode JWT tokens for authentication                       |
+| **date-fns**         | ^3.x    | Formatting and manipulating dates (for article timestamps) |
+| **prop-types**       | ^15.x   | Runtime type checking for React props                      |
+| **dotenv**           | ^16.x   | Environment variable management (for .env setup)           |
+
+
+
+# Set environment variables
+
+Create a .env file in the project root:
+
+REACT_APP_API_URL=https://realworld.habsida.net/api
+
+
+# Build for production
+
+To create an optimized production build:
+
+npm run build
+or
+yarn build
+
+
+# Example Credentials
+
+You can register a new user and login with Email and Password
+
+# Routes Overview
+Route	Description
+/	Global article feed
+/sign-in	Login page
+/sign-up	Registration page
+/profile	User profile & settings
+/article/:slug	View a single article
+/editor	Create a new article
+/editor/:slug	Edit an existing article
+
+# Scripts
+Command	Description
+npm start	run - Dev server
+npm run build	- Build for production
+npm run lint - Run ESLint checks
+npm run format - Format with Prettier
