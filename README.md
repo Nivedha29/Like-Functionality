@@ -2,7 +2,7 @@
 
 A full-featured blog platform built with React, React Router v6, and React Hook Form, following the RealWorld API specification
 .
-This app supports authentication, article creation, profiles, and Markdown rendering — all connected to a live backend.
+This app supports authentication, article creation, profiles, and Markdown rendering.
 
 ## Live Deployment
 
@@ -66,16 +66,26 @@ You can register a new user and login with Email and Password
 # Routes Overview
 Route	Description
 /	Global article feed
+
 /sign-in	Login page
+
 /sign-up	Registration page
+
 /profile	User profile & settings
+
 /article/:slug	View a single article
+
 /editor	Create a new article
+
 /editor/:slug	Edit an existing article
 
 # Scripts
 Command	Description
+
 npm start	run - Dev server
+
 npm run build	- Build for production
+
 npm run lint - Run ESLint checks
+
 npm run format - Format with Prettier
