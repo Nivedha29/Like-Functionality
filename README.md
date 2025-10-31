@@ -6,7 +6,7 @@ This app supports authentication, article creation, profiles, and Markdown rende
 
 ## Live Deployment
 
-Live Demo: 
+Live Demo: https://like-functionality-five.vercel.app/
 
 
 ## Tech Stack
