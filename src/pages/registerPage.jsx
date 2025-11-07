@@ -1,6 +1,5 @@
-// src/pages/registerPage.jsx
-import React from "react";
-import { useForm } from "react-hook-form";
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function RegisterPage() {
   const {
@@ -9,16 +8,16 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm();
 
-  const [serverError, setServerError] = React.useState("");
+  const [serverError, setServerError] = React.useState('');
 
   const onSubmit = async (formData) => {
     try {
       // TODO: call your API here
       // await fetch("/api/register", { ... });
-      console.log("formData", formData);
-      setServerError(""); // clear old error on success
+      console.log('formData', formData);
+      setServerError(''); // clear old error on success
     } catch {
-      setServerError("Registration failed. Please try again.");
+      setServerError('Registration failed. Please try again.');
     }
   };
 
@@ -29,28 +28,19 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           Username
-          <input
-            {...register("username", { required: "Username is required" })}
-            type="text"
-          />
+          <input {...register('username', { required: 'Username is required' })} type="text" />
           {errors.username && <p className="error">{errors.username.message}</p>}
         </label>
 
         <label>
           Email
-          <input
-            {...register("email", { required: "Email is required" })}
-            type="email"
-          />
+          <input {...register('email', { required: 'Email is required' })} type="email" />
           {errors.email && <p className="error">{errors.email.message}</p>}
         </label>
 
         <label>
           Password
-          <input
-            {...register("password", { required: "Password is required" })}
-            type="password"
-          />
+          <input {...register('password', { required: 'Password is required' })} type="password" />
           {errors.password && <p className="error">{errors.password.message}</p>}
         </label>
 

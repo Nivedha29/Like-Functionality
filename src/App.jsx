@@ -1,16 +1,16 @@
-import React from "react";
-import { Routes, Route, Navigate, Link } from "react-router-dom";
-import PrivateRoute from "./routes/PrivateRoute";
-import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/registerPage.jsx";
-import ProfilePage from "./pages/ProfilePage";
-import ArticlePage from "./pages/ArticlePage";
-import NewArticlePage from "./pages/NewArticlePage";
-import EditArticlePage from "./pages/EditArticlePage";
-import { useAuth } from "./state/AuthContext";
-import Profile from "./pages/Profile.jsx";
-import TaskPage from "./pages/TaskPage"; // ✅ NEW
+import React from 'react';
+import { Routes, Route, Navigate, Link } from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/registerPage.jsx';
+import ProfilePage from './pages/ProfilePage';
+import ArticlePage from './pages/ArticlePage';
+import NewArticlePage from './pages/NewArticlePage';
+import EditArticlePage from './pages/EditArticlePage';
+import { useAuth } from './state/AuthContext';
+import Profile from './pages/Profile.jsx';
+import TaskPage from './pages/TaskPage';
 
 export default function App() {
   const { user, logout } = useAuth();
@@ -18,15 +18,21 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <Link to="/" className="brand">RealWorld Blog</Link>
+        <Link to="/" className="brand">
+          RealWorld Blog
+        </Link>
         <nav className="nav">
           <Link to="/">Home</Link>
-          {user && <Link to="/tasks">Tasks</Link>} {/* ✅ Show only if logged in */}
+          {user && <Link to="/tasks">Tasks</Link>} {/* Show only if logged in */}
           {user ? (
             <>
-              <Link to="/new-article" className="btn">New Article</Link>
+              <Link to="/new-article" className="btn">
+                New Article
+              </Link>
               <Link to="/profile">Profile</Link>
-              <button className="btn linklike" onClick={logout}>Logout</button>
+              <button className="btn linklike" onClick={logout}>
+                Logout
+              </button>
             </>
           ) : (
             <>
@@ -40,8 +46,8 @@ export default function App() {
       <main className="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          
-          {/* ✅ Protected Task Page */}
+
+          {/* Protected Task Page */}
           <Route
             path="/tasks"
             element={

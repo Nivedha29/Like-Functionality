@@ -1,5 +1,4 @@
-// src/utils/likes.js
-const STORAGE_KEY = "liked-articles";
+const STORAGE_KEY = 'liked-articles';
 
 export function getLikedArticles() {
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -27,4 +26,3 @@ export function toggleArticleLike(slug) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   return next;
 }
-
