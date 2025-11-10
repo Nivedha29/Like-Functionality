@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Api } from '../services/api';
 import Avatar from '../components/Avatar';
 import LikeButton from '../components/LikeButton';
@@ -12,8 +11,10 @@ export default function HomePage() {
     (async () => {
       try {
         const res = await Api.listArticles({ limit: 10, offset: 0 });
+        console.log('API /articles response:', res);
         setArticles(res?.articles ?? []);
       } catch (e) {
+        console.error('listArticles error:', e);
         setErr(e);
       }
     })();
@@ -26,21 +27,17 @@ export default function HomePage() {
 
       <div className="grid">
         {articles.map((a) => (
-          <Link key={a.slug} to={`/articles/${a.slug}`} className="card linkcard">
+          <article key={a.slug} className="card linkcard" style={{ padding: 16, marginBottom: 12 }}>
             {/* Author header */}
             {a?.author && (
               <div className="article-meta" style={{ marginBottom: 8, display: 'flex', gap: 8 }}>
-                <Link
-                  to={`/profile/${a.author?.username || a.author?.name || 'user'}`}
-                  onClick={(e) => e.stopPropagation()}
-                >
+                <Link to={`/profile/${a.author?.username || a.author?.name || 'user'}`}>
                   <Avatar author={a.author} />
                 </Link>
                 <div className="info">
                   <Link
                     to={`/profile/${a.author?.username || a.author?.name || 'user'}`}
                     className="author"
-                    onClick={(e) => e.stopPropagation()}
                   >
                     {a.author?.username || a.author?.name || 'User'}
                   </Link>
@@ -51,23 +48,17 @@ export default function HomePage() {
               </div>
             )}
 
-            {/* Content */}
-            <h3>{a.title}</h3>
-            <p>{a.description}</p>
+            {/* Title links to the article page */}
+            <h3 style={{ margin: 0 }}>
+              <Link to={`/articles/${a.slug}`}>{a.title}</Link>
+            </h3>
+            <p style={{ marginTop: 6 }}>{a.description}</p>
 
-            {/* Like button */}
-            <div
-              style={{
-                marginTop: 12,
-                display: 'flex',
-                justifyContent: 'flex-end',
-              }}
-            >
+            <div style={{ marginTop: 12, display: 'flex', justifyContent: 'flex-end' }}>
               <LikeButton slug={a.slug} />
             </div>
-          </Link>
+          </article>
         ))}
-
         {articles.length === 0 && !err && <p style={{ color: '#6b7280' }}>No articles yet.</p>}
       </div>
     </div>

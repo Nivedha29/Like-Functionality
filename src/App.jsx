@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/registerPage.jsx';
 import ProfilePage from './pages/ProfilePage';
+import EditProfilePage from './pages/EditProfilePage.jsx';
 import ArticlePage from './pages/ArticlePage';
 import NewArticlePage from './pages/NewArticlePage';
 import EditArticlePage from './pages/EditArticlePage';
@@ -68,6 +69,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/profile/edit" element={<EditProfilePage />} />
           <Route path="/articles/:slug" element={<ArticlePage />} />
           <Route
             path="/new-article"
