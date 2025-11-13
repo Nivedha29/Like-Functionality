@@ -6,40 +6,49 @@
   --surface: #ffffff;
 }
 
-* { 
-  box-sizing: border-box; 
+* {
+  box-sizing: border-box;
 }
 
-html, body, #root { 
-  height: 100%; 
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background-color: #f5f7fa; 
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial;
+  background-color: #f5f7fa;
   color: #222;
 }
 
-a { 
-  color: var(--primary); 
-  text-decoration: none; 
+a {
+  color: var(--primary);
+  text-decoration: none;
 }
 
-a:hover { 
-  text-decoration: underline; 
+a:hover {
+  text-decoration: underline;
 }
 
-.app-shell { 
-  display: flex; 
-  flex-direction: column; 
-  min-height: 100%; 
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 20px;             
+  gap: 20px;
 }
 
 .nav .btn {
@@ -51,7 +60,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 12px 28px;
-  background: linear-gradient(180deg, #42ba96 0%, #33a26f 100%); 
+  background: linear-gradient(180deg, #42ba96 0%, #33a26f 100%);
   color: white;
   position: sticky;
   top: 0;
@@ -106,7 +115,7 @@ a:hover {
 .btn.linklike {
   background: transparent;
   border: none;
-  color: #2f4f4f;                
+  color: #2f4f4f;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -115,7 +124,7 @@ a:hover {
 }
 
 .btn.linklike:hover {
-  color: #1f6a4c;                
+  color: #1f6a4c;
   text-decoration: underline;
 }
 
@@ -125,32 +134,31 @@ a:hover {
   margin-top: 10px;
 }
 
-.main { 
-  flex: 1; 
-  padding: 20px; 
+.main {
+  flex: 1;
+  padding: 20px;
 }
 
-.container { 
-  max-width: 900px; 
-  margin: 0 auto; 
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  max-width: 800px;    
-  margin: 0 auto;      
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-
 .card {
-  background: #ffffff; 
-  border: 1px solid #e0e0e0; 
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
-  color: #222; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: #222;
 }
 
 .card:hover {
@@ -159,33 +167,33 @@ a:hover {
   transition: all 0.2s ease;
 }
 
-.linkcard { 
-  display: block; 
-  color: inherit; 
-  text-decoration: none; 
+.linkcard {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
-.linkcard h3 { 
-  margin: 0 0 6px; 
+.linkcard h3 {
+  margin: 0 0 6px;
 }
 
-.linkcard p { 
-  margin: 0 0 8px; 
-  color: var(--muted); 
+.linkcard p {
+  margin: 0 0 8px;
+  color: var(--muted);
 }
 
-.meta { 
-  color: var(--muted); 
-  font-size: 0.9rem; 
-  display: flex; 
-  gap: 8px; 
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  gap: 8px;
 }
 
-.form .field { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 6px; 
-  margin-bottom: 12px; 
+.form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .form label {
@@ -194,13 +202,13 @@ a:hover {
 }
 
 .error {
-  color: #d93025; 
+  color: #d93025;
 }
 .form input,
 .form textarea {
-  background: #ffffff;           
-  color: #222222;                
-  border: 1px solid #cccccc;     
+  background: #ffffff;
+  color: #222222;
+  border: 1px solid #cccccc;
   border-radius: 8px;
   padding: 10px 12px;
   outline: none;
@@ -208,35 +216,35 @@ a:hover {
 
 .form input::placeholder,
 .form textarea::placeholder {
-  color: #888888;                
+  color: #888888;
 }
 
 .form input:focus,
 .form textarea:focus {
-  border-color: #42ba96;        
-  box-shadow: 0 0 4px rgba(66,186,150,0.3);
+  border-color: #42ba96;
+  box-shadow: 0 0 4px rgba(66, 186, 150, 0.3);
 }
 
-.form .actions { 
-  margin-top: 12px; 
+.form .actions {
+  margin-top: 12px;
 }
 
 .alert.error {
-  background: #2b0f14; 
-  border: 1px solid #5b1a23; 
+  background: #2b0f14;
+  border: 1px solid #5b1a23;
   color: #ffc7ce;
-  padding: 10px 12px; 
-  border-radius: 10px; 
+  padding: 10px 12px;
+  border-radius: 10px;
   margin-bottom: 14px;
 }
 
-.article-title { 
-  margin: 0 0 6px; 
+.article-title {
+  margin: 0 0 6px;
 }
 
-.desc { 
-  color: var(--muted); 
-  margin-top: 0; 
+.desc {
+  color: var(--muted);
+  margin-top: 0;
 }
 
 .tags {
@@ -247,43 +255,45 @@ a:hover {
 }
 
 .tag {
-  background: #f0f4f8;             
-  border: 1px solid #d0d7de;       
+  background: #f0f4f8;
+  border: 1px solid #d0d7de;
   border-radius: 999px;
   padding: 4px 10px;
   font-size: 0.85rem;
-  color: #333333;                   
-  transition: background 0.2s ease, color 0.2s ease;
+  color: #333333;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .tag:hover {
-  background: #e3f8ef;              
-  border-color: #42ba96;            
+  background: #e3f8ef;
+  border-color: #42ba96;
   color: #1e6048;
 }
 
 .modal-backdrop {
-  position: fixed; 
-  inset: 0; 
-  background: rgba(0,0,0,.6);
-  display: grid; 
-  place-items: center; 
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: grid;
+  place-items: center;
   z-index: 20;
 }
 
 .modal {
-  background: var(--surface); 
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px; 
-  padding: 18px; 
+  border-radius: 12px;
+  padding: 18px;
   width: min(92vw, 420px);
 }
 
-.modal-actions { 
-  display: flex; 
-  justify-content: flex-end; 
-  gap: 10px; 
-  margin-top: 12px; 
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .auth-container {
@@ -300,7 +310,7 @@ a:hover {
   border-radius: 12px;
   padding: 32px;
   width: 100%;
-  max-width: 400px;     
+  max-width: 400px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
@@ -310,18 +320,20 @@ a:hover {
   color: #333333;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
 }
 
 /* Centering utility */
 .page-center {
-  min-height: 100vh;           
+  min-height: 100vh;
   display: flex;
-  align-items: center;         
-  justify-content: center;     
-  background: #f9fafb;        
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
 }
 
 /* Card wrapper for the form */
@@ -331,7 +343,7 @@ html, body, #root {
   background: #fff;
   padding: 24px;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .form-card input {
@@ -367,14 +379,14 @@ html, body, #root {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;     
-  display: inline-block; 
+  object-fit: cover;
+  display: inline-block;
   border: 2px solid #00b37d;
 }
-.article-meta{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .home-container {
@@ -393,12 +405,12 @@ html, body, #root {
 
 .article-section {
   flex: 1.5;
-  min-width: 0;           /* let it shrink */
+  min-width: 0; /* let it shrink */
 }
 
 .sidebar {
   flex: 0.6;
-  min-width: 0;           /* let it shrink */
+  min-width: 0; /* let it shrink */
 }
 
 .section-title {
@@ -460,7 +472,7 @@ html, body, #root {
   .article-section,
   .sidebar {
     width: 100%;
-    min-width: 0;            /* override old min-width */
+    min-width: 0; /* override old min-width */
   }
 
   .container,
@@ -495,4 +507,20 @@ html, body, #root {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.user-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
 }

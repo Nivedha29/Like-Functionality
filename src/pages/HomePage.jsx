@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Api } from '../services/api';
 import Avatar from '../components/Avatar';
 import LikeButton from '../components/LikeButton';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   const [articles, setArticles] = useState([]);

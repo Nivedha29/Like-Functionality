@@ -3,13 +3,21 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const raw = localStorage.getItem('rw_user');
-    return raw ? JSON.parse(raw) : null;
-  });
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [ready, setReady] = useState(false); // <--- NEW FLAG
 
-  const [token, setToken] = useState(() => localStorage.getItem('rw_token'));
+  useEffect(() => {
+    // Load user & token once when app starts
+    const rawUser = localStorage.getItem('rw_user');
+    const rawToken = localStorage.getItem('rw_token');
 
+    if (rawUser) setUser(JSON.parse(rawUser));
+    if (rawToken) setToken(rawToken);
+    setReady(true); // mark that initialization is done
+  }, []);
+
+  // keep storage in sync
   useEffect(() => {
     if (user) localStorage.setItem('rw_user', JSON.stringify(user));
     else localStorage.removeItem('rw_user');
@@ -31,7 +39,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout, setUser, setToken }}>
+    <AuthContext.Provider value={{ user, token, login, logout, setUser, setToken, ready }}>
       {children}
     </AuthContext.Provider>
   );

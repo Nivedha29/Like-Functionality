@@ -75,21 +75,24 @@ export const Api = {
 
   async updateUser(token, { username, email, bio, image, password }) {
     const payload = {
-      user: {
-        ...(username != null ? { username: username.trim() } : {}),
-        ...(email != null ? { email: email.trim() } : {}),
-        ...(bio != null ? { bio } : {}),
-        ...(image != null ? { image: image.trim() } : {}),
-        // password is optional; only send if provided
-        ...(password ? { password } : {}),
-      },
+      // required
+      username: (username ?? '').trim(),
+      email: (email ?? '').trim(),
+      // optional
+      bio: bio ?? '',
+      image: image ? image.trim() : '',
+      ...(password ? { password } : {}), // only include password if user typed it
     };
 
     const res = await fetch(`${API_ROOT}/user`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', ...authHeaders(token) },
+      headers: {
+        'Content-Type': 'application/json',
+        ...authHeaders(token),
+      },
       body: JSON.stringify(payload),
     });
+
     return handle(res); // -> { user: {...} }
   },
 };
