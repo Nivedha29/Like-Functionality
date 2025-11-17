@@ -5,18 +5,39 @@ function authHeaders(token) {
 }
 
 async function handle(res) {
-  const isJson = res.headers.get('content-type')?.toLowerCase().includes('application/json');
-  const body = isJson ? await res.json().catch(() => ({})) : {};
+  const contentType = res.headers.get("content-type")?.toLowerCase() || "";
+  const isJson = contentType.includes("application/json");
+
+  let body = {};
+  let text = "";
+
+  // Parse JSON or plain text depending on response
+  if (isJson) {
+    body = await res.json().catch(() => ({}));
+  } else {
+    text = await res.text().catch(() => "");
+  }
 
   if (!res.ok) {
+    const errors = body?.errors || null;
+
+    const message =
+      body?.message ||
+      (text && text.trim()) ||   // <- will catch "Invalid credentials"
+      res.statusText ||
+      "Request failed";
+
     throw {
       status: res.status,
-      message: body?.message || res.statusText || 'Request failed',
-      errors: body?.errors || null,
+      message,
+      errors,
     };
   }
-  return body;
+
+  // success: return JSON if there is one, otherwise raw text
+  return Object.keys(body).length ? body : text;
 }
+
 
 export const Api = {
   async listArticles({ limit = 10, offset = 0 } = {}) {
