@@ -1,5 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+// If you use react-router:
+import { useNavigate } from "react-router-dom";
+
+const API_ROOT = "https://realworld.habsida.net/api";
 
 export default function RegisterPage() {
   const {
@@ -9,15 +13,54 @@ export default function RegisterPage() {
   } = useForm();
 
   const [serverError, setServerError] = React.useState("");
+  const navigate = useNavigate(); // if you have react-router
 
   const onSubmit = async (formData) => {
+    setServerError("");
+
     try {
-      // TODO: call your API here
-      // await Api.register(formData);
-      console.log("formData", formData);
-      setServerError("");
+      const res = await fetch(`${API_ROOT}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+          },
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        // RealWorld error format: { errors: { email: ["has already been taken"], ... } }
+        if (data && data.errors) {
+          const messages = Object.entries(data.errors)
+            .map(
+              ([field, msgs]) =>
+                `${field} ${Array.isArray(msgs) ? msgs.join(", ") : msgs}`
+            )
+            .join(" | ");
+          setServerError(messages || "Registration failed. Please try again.");
+        } else {
+          setServerError("Registration failed. Please try again.");
+        }
+        return;
+      }
+
+      // Success – data.user contains token, email, username
+      const user = data.user;
+      // Save token for later requests
+      localStorage.setItem("token", user.token);
+
+      // Redirect to home (or wherever you like)
+      navigate("/");
     } catch (e) {
-      setServerError("Registration failed. Please try again.");
+      console.error(e);
+      setServerError("Network error. Please try again.");
     }
   };
 
@@ -58,7 +101,13 @@ export default function RegisterPage() {
             <input
               id="password"
               type="password"
-              {...register("password", { required: "Password is required" })}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters",
+                },
+              })}
             />
             {errors.password && (
               <p className="error-text">{errors.password.message}</p>
