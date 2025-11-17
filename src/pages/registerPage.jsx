@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-// If you use react-router:
 import { useNavigate } from "react-router-dom";
 
 const API_ROOT = "https://realworld.habsida.net/api";
