@@ -1,5 +1,5 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React from "react";
+import { useForm } from "react-hook-form";
 
 export default function RegisterPage() {
   const {
@@ -8,46 +8,68 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm();
 
-  const [serverError, setServerError] = React.useState('');
+  const [serverError, setServerError] = React.useState("");
 
   const onSubmit = async (formData) => {
     try {
       // TODO: call your API here
-      // await fetch("/api/register", { ... });
-      console.log('formData', formData);
-      setServerError(''); // clear old error on success
-    } catch {
-      setServerError('Registration failed. Please try again.');
+      // await Api.register(formData);
+      console.log("formData", formData);
+      setServerError("");
+    } catch (e) {
+      setServerError("Registration failed. Please try again.");
     }
   };
 
   return (
-    <div className="page auth-page">
-      <h1>Sign up</h1>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Sign up</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Username
-          <input {...register('username', { required: 'Username is required' })} type="text" />
-          {errors.username && <p className="error">{errors.username.message}</p>}
-        </label>
+        {serverError ? <div className="alert error">{serverError}</div> : null}
 
-        <label>
-          Email
-          <input {...register('email', { required: 'Email is required' })} type="email" />
-          {errors.email && <p className="error">{errors.email.message}</p>}
-        </label>
+        <form className="card form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="field">
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              {...register("username", { required: "Username is required" })}
+            />
+            {errors.username && (
+              <p className="error-text">{errors.username.message}</p>
+            )}
+          </div>
 
-        <label>
-          Password
-          <input {...register('password', { required: 'Password is required' })} type="password" />
-          {errors.password && <p className="error">{errors.password.message}</p>}
-        </label>
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              {...register("email", { required: "Email is required" })}
+            />
+            {errors.email && (
+              <p className="error-text">{errors.email.message}</p>
+            )}
+          </div>
 
-        <button type="submit">Create account</button>
-      </form>
+          <div className="field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              {...register("password", { required: "Password is required" })}
+            />
+            {errors.password && (
+              <p className="error-text">{errors.password.message}</p>
+            )}
+          </div>
 
-      {serverError ? <p className="error">{serverError}</p> : null}
+          <button type="submit" className="btn primary">
+            Create account
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
