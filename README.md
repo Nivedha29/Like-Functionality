@@ -5,7 +5,6 @@ A full-featured blog platform built with React, React Router v6, and React Hook 
 This app supports authentication, article creation, profiles, and Markdown rendering.
 
 The RealWorld Blog App is fully responsive and mobile-friendly, allowing users to browse, read, and write articles comfortably on any device — from large desktop screens to 
-
 mobile phones.
 
 ## Live Deployment
