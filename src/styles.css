@@ -550,3 +550,18 @@ img {
   opacity: 0.5;
   cursor: default;
 }
+
+.latest-header {
+  display: flex;
+  justify-content: center;   
+  margin: 24px 0 16px;      
+}
+
+.latest-title {
+  background-color: #42ba96; 
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
