@@ -41,7 +41,9 @@ export default function HomePage() {
 
   return (
     <div className="container">
-      <h2>Latest Articles</h2>
+      <div className="latest-header">
+    <h2 className="latest-title">Latest Articles</h2>
+  </div>
       {err && (
         <div className="alert error">
           Error: {String(err.message || err)}
