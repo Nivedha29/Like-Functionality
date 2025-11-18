@@ -116,4 +116,20 @@ export const Api = {
 
     return handle(res); // -> { user: {...} }
   },
+
+// fetch public profile by username
+  async getProfile(username) {
+  const token = localStorage.getItem("jwt") || localStorage.getItem("token");
+
+  const res = await fetch(
+    `${API_ROOT}/profiles/${encodeURIComponent(username)}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        ...authHeaders(token),   // harmless if token is null
+      },
+    }
+  );
+  return handle(res);  // -> { profile: {...} } or throws with {status, message, errors}
+},
 };
