@@ -4,6 +4,19 @@ function authHeaders(token) {
   return token ? { Authorization: `Token ${token}` } : {};
 }
 
+function getStoredToken() {
+  const t =
+    localStorage.getItem("rw_token") || // <-- your real key
+    localStorage.getItem("token") ||
+    localStorage.getItem("jwt");
+
+  if (!t || t === "null" || t === "undefined" || t.trim() === "") {
+    return null; // don't send invalid token
+  }
+
+  return t;
+}
+
 async function handle(res) {
   const contentType = res.headers.get("content-type")?.toLowerCase() || "";
   const isJson = contentType.includes("application/json");
@@ -117,19 +130,19 @@ export const Api = {
     return handle(res); // -> { user: {...} }
   },
 
-// fetch public profile by username
-  async getProfile(username) {
-  const token = localStorage.getItem("jwt") || localStorage.getItem("token");
+async getProfile(username) {
+    const token = getStoredToken(); 
 
-  const res = await fetch(
-    `${API_ROOT}/profiles/${encodeURIComponent(username)}`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        ...authHeaders(token),   // harmless if token is null
-      },
-    }
-  );
-  return handle(res);  // -> { profile: {...} } or throws with {status, message, errors}
-},
+    const res = await fetch(
+      `${API_ROOT}/profiles/${encodeURIComponent(username)}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          ...authHeaders(token), // only sends Authorization if token is valid
+        },
+      }
+    );
+
+    return handle(res);
+  },
 };
